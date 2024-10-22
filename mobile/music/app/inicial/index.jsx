@@ -6,27 +6,24 @@ import { router } from 'expo-router';
 
 const VibrarScreen = () => {
     
-    setTimeout(() => {
-        router.replace('/login');
-      }, 1000);
 
 
   return (
     <View style={styles.container}>
    
-      <View style={styles.Circulo2} />
+      
 
       <View style={styles.centerContent}>
      
         <View style={styles.logo}>
-        <Image   style={styles.logo} source={require('./img/logo.png')} />
+        <Image   style={styles.logo} source={require('../img/logo.png')} />
           <Text style={styles.logoText}>VIBRA</Text>
           <Text style={styles.descricao}>onde cada batida é um novo momento.</Text>
+          <View style={styles.quadrado} ></View>
         </View>
       </View>
 
    
-      <View style={styles.Circulo1} />
     </View>
   );
 };
@@ -38,16 +35,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     backgroundColor: '#FFF',
   },
- Circulo2: {
-    width: 300,
-    height: 150,
-    borderTopLeftRadius: 150,
-    borderTopRightRadius: 150,
-    backgroundColor: '#772E25',
-    position: 'absolute',
-    top: 420,
-    right: -75,
-  },
+  
   centerContent: {
     flex: 1,
     justifyContent: 'center',
@@ -70,16 +58,7 @@ const styles = StyleSheet.create({
     fontSize: 14,
     color: '#666',
   },
-  Circulo1: {
-    width: 300,
-    height: 150,
-    borderBottomLeftRadius: 150,
-    borderBottomRightRadius: 150,
-    backgroundColor: '#00A9A5',
-    position: 'absolute',
-    bottom: 425,
-    left: -75,
-  },
+
 });
 
 export default VibrarScreen;

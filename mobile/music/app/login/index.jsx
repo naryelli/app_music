@@ -3,20 +3,15 @@ import { View, Text, TextInput, Pressable, StyleSheet, SafeAreaView } from "reac
 
 const style = StyleSheet.create({
     input: {
-        width: '100%',
-        margin: 10,
-        shadowOpacity: 0.25,  
-        shadowRadius: 7.84,     
-        color: 'gray', 
-        padding:5
-        
+        height: 60,
+        width: "95%",
+        borderColor: "gray",
+        borderWidth: 1,
+        marginBottom: 20,
+        borderRadius:20
+     
     },
-    container: {
-        justifyContent:'center',
-        alignItems:'center',
-        flex:'1', 
-      
-    },
+    
      botao:{
     alignItems: 'center',
     justifyContent: 'center',
@@ -28,29 +23,38 @@ const style = StyleSheet.create({
     margin:10
 
      },
+     container:{
+        backgroundColor:'#197278'
+     },
 
     titulo:{
-        fontSize: 50,
-        textAlign: 'center',
-        margin: 10,
-        fontFamily: 'Open Sans',
-        fontWeight:'800',
-   
+        fontSize: 32,
+        fontWeight: 'bold',
+        marginBottom: 10,
+        color:'white'
     },
     botaotexto:{
         color:'white',
-       
+    
     },
-    inputView:{
-        alignItems: 'center',
-        justifyContent: 'center',
-        
-    },
-   box:{
-    shadowOpacity: 0.25,  
-        shadowRadius: 8.84, 
-       padding: 50
-   }
+  
+   descricao:{
+    fontSize: 19,
+    color: '#666',
+    height:590,
+    color:'white'
+   },
+    card: {
+        backgroundColor:'white',
+        padding: 20,
+        borderRadius: 30,
+        marginBottom: 100,
+        height:  '65%', 
+        width: '100%',
+        marginVertical:290,
+        justifyContent: 'flex-end'
+      },
+     
 })
 
 export default SinUp = () => {
@@ -87,12 +91,15 @@ export default SinUp = () => {
 
 return (
     <SafeAreaView style={style.container}>
-        <View style={style.box}>
-        <View >
-            <Text style={style.titulo}>Login</Text>
-        </View>
-        <View style={style.inputView}>
-          
+   
+        <View style={style.card}>
+      
+        <Text style={style.titulo}>SEJA BEM-VINDO
+DE VOLTA!</Text>
+        <Text style={style.descricao}>A música está esperando por você.</Text>
+<View/>
+
+
               <TextInput
                 style={style.input}
                 onChangeText={(text) => setEmail(text)}
@@ -113,9 +120,10 @@ return (
                 <Pressable onPress={registrarUsuario}>
                     <Text style={style.botaotexto}>Entrar</Text>
                 </Pressable>
+                </View>
             </View>
-</View>
-        </View>
+          
+
     </SafeAreaView>
 
 )
