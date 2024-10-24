@@ -25,7 +25,7 @@ const style = StyleSheet.create({
     color:'white',
     paddingHorizontal: 8,
     paddingVertical: 3,
-    margin:10
+   
 
      },
 
@@ -69,7 +69,7 @@ export default SinUp = () => {
             console.log('os parametros nome, email e senha devem ser fornecidos')
             return
         }
-        const resposta = await fetch('https://taskhub-s37f.onrender.com/auth/signup',{
+        const resposta = await fetch('http://localhost:8000/registro',{
             method: 'POST',
             headers: {
             Accept: 'application/json',

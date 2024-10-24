@@ -8,19 +8,19 @@ const style = StyleSheet.create({
         borderColor: "gray",
         borderWidth: 1,
         marginBottom: 20,
-        borderRadius:20
-     
+        borderRadius:20,
+       color:"gray",
     },
     
      botao:{
     alignItems: 'center',
     justifyContent: 'center',
     borderRadius: 4,
-    backgroundColor: 'black',
+    backgroundColor: '#772E25',
     color:'white',
-    paddingHorizontal: 8,
-    paddingVertical: 3,
-    margin:10
+    width:169,
+    height:50,
+    margin:100
 
      },
      container:{
@@ -35,13 +35,13 @@ const style = StyleSheet.create({
     },
     botaotexto:{
         color:'white',
-    
+
     },
   
    descricao:{
     fontSize: 19,
     color: '#666',
-    height:590,
+    height:300,
     color:'white'
    },
     card: {
