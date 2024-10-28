@@ -1,56 +1,72 @@
 import { useState } from "react";
-import { View, Text, TextInput, Pressable, StyleSheet, SafeAreaView } from "react-native";
+import { View, Text, TextInput, Pressable, StyleSheet, SafeAreaView, Image } from "react-native";
+import { Link } from 'expo-router';
 
 const style = StyleSheet.create({
     input: {
-        width: '100%',
-        margin: 10,
-        shadowOpacity: 0.25,  
-        shadowRadius: 7.84,     
-        color: 'gray', 
-        padding:5
-        
+        height: 60,
+        width: "95%",
+        borderColor: "gray",
+        borderWidth: 1,
+        marginBottom: 20,
+        borderRadius: 20,
+        color: "#565656",
     },
-    container: {
-        justifyContent:'center',
-        alignItems:'center',
-        flex:'1', 
-      
-    },
-     botao:{
-    alignItems: 'center',
-    justifyContent: 'center',
-    borderRadius: 4,
-    backgroundColor: 'black',
-    color:'white',
-    paddingHorizontal: 8,
-    paddingVertical: 3,
-   
 
-     },
-
-    titulo:{
-        fontSize: 50,
-        textAlign: 'center',
-        margin: 10,
-        fontFamily: 'Open Sans',
-        fontWeight:'800',
-   
-    },
-    botaotexto:{
-        color:'white',
-       
-    },
-    inputView:{
+    botao: {
         alignItems: 'center',
         justifyContent: 'center',
-        
+        borderRadius: 4,
+        backgroundColor: '#772E25',
+        color: 'white',
+        width: 160,
+        height: 50,
+        margin: 100
+
     },
-   box:{
-    shadowOpacity: 0.25,  
-        shadowRadius: 8.84, 
-       padding: 50
-   }
+    container: {
+        backgroundColor: '#197278'
+       
+    },
+
+    titulo: {
+        fontSize: 32,
+        fontWeight: 'bold',
+        marginBottom: 10,
+        color: 'white',
+    
+    },
+    botaotexto: {
+        color: 'white',
+
+    },
+
+    descricao: {
+        fontSize: 19,
+        color: '#666',
+        height: 80,
+        color: 'white',
+       
+    },
+    card: {
+        backgroundColor: 'white',
+        padding: 20,
+        borderRadius: 30,
+        marginBottom: 190,
+        height: '65%',
+        width: '100%',
+        marginVertical: 190,
+        justifyContent: 'flex-end'
+    },
+    link: {
+        alignItems: 'center',
+        justifyContent: 'center',
+       
+    },
+    logo: {
+
+    }
+
 })
 
 export default SinUp = () => {
@@ -69,74 +85,77 @@ export default SinUp = () => {
             console.log('os parametros nome, email e senha devem ser fornecidos')
             return
         }
-        const resposta = await fetch('http://localhost:8000/registro',{
+        const resposta = await fetch('http://localhost:8000/registro', {
             method: 'POST',
             headers: {
-            Accept: 'application/json',
-            'Content-type': 'application/json',
-        },
-            body: JSON.stringify({ name: nome, email: email, senha: senha, sobrenome:sobrenome, dataNascimento:dataNascimento })
+                Accept: 'application/json',
+                'Content-type': 'application/json',
+            },
+            body: JSON.stringify({ name: nome, email: email, senha: senha, sobrenome: sobrenome, dataNascimento: dataNascimento })
         })
-        
-    if (!resposta) {
-        console.log('erro')
-    } else if (resposta.status == 200) {
-        console.log('user criado com sucesso')
-    } else {
-        console.log('ocorreu um erro')
+
+        if (!resposta) {
+            console.log('erro')
+        } else if (resposta.status == 200) {
+            console.log('user criado com sucesso')
+        } else {
+            console.log('ocorreu um erro')
+        }
     }
-}
 
 
-return (
-    <SafeAreaView style={style.container}>
-        <View style={style.box}>
-        <View >
-            <Text style={style.titulo}>Registre-se</Text>
-        </View>
-        <View style={style.inputView}>
-            <TextInput
-                style={style.input}
-                onChangeText={(text) => setNome(text)}
-                value={nome}
-                placeholder="Digite seu nome ;)"
-            /><TextInput
-                style={style.input}
-                onChangeText={(text) => setSenha(text)}
-                value={sobrenome}
-                placeholder="Digite seu sobrenome)"
-                secureTextEntry={true}
-            />
-              <TextInput
-                style={style.input}
-                onChangeText={(text) => setEmail(text)}
-                value={email}
-                placeholder="Digite seu email"
-            />
-             <TextInput
-                style={style.input}
-                onChangeText={(text) => setSenha(text)}
-                value={dataNascimento}
-                placeholder="Digite sua data de nascimento"
-                secureTextEntry={true}
-            />
-            <TextInput
-                style={style.input}
-                onChangeText={(text) => setSenha(text)}
-                value={senha}
-                placeholder="Digite sua senha (aqui é seguro confia)"
-                secureTextEntry={true}
-            />
-           
+    return (
+        <SafeAreaView style={style.container}>
+            <Link href="/login" >
+                <Image style={style.logo} source={require('../img/desfazer (2).png')} />
+            </Link>
+            <View style={style.card}>
+                <Text style={style.titulo}>CRIE SUA CONTA E COMECE A SENTIR A VIBRAÇÃO!</Text>
+                <Text style={style.descricao}>A música está esperando por você.</Text>
+                <View />
+                <View style={style.inputView}>
+                    <TextInput
+                        style={style.input}
+                        onChangeText={(text) => setNome(text)}
+                        value={nome}
+                        placeholder="Digite seu nome ;)"
+                    /><TextInput
+                        style={style.input}
+                        onChangeText={(text) => setSenha(text)}
+                        value={sobrenome}
+                        placeholder="Digite seu sobrenome)"
+                        secureTextEntry={true}
+                    />
+                    <TextInput
+                        style={style.input}
+                        onChangeText={(text) => setEmail(text)}
+                        value={email}
+                        placeholder="Digite seu email"
+                    />
+                    <TextInput
+                        style={style.input}
+                        onChangeText={(text) => setSenha(text)}
+                        value={dataNascimento}
+                        placeholder="Digite sua data de nascimento"
+                        secureTextEntry={true}
+                    />
+                    <TextInput
+                        style={style.input}
+                        onChangeText={(text) => setSenha(text)}
+                        value={senha}
+                        placeholder="Digite sua senha (aqui é seguro confia)"
+                        secureTextEntry={true}
+                    />
 
-            <View style={style.botao} >
-                <Pressable onPress={registrarUsuario}>
-                    <Text style={style.botaotexto}>Cadastrar</Text>
-                </Pressable>
+
+                    <View style={style.botao} >
+                        <Pressable onPress={registrarUsuario}>
+                            <Text style={style.botaotexto}>Cadastrar</Text>
+                        </Pressable>
+                    </View>
+                </View>
             </View>
-</View>
-        </View>
-    </SafeAreaView>
+        </SafeAreaView>
 
-)
+    )
 }
