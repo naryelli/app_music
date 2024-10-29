@@ -5,27 +5,27 @@ import { router } from 'expo-router';
 
 
 const VibrarScreen = () => {
-    
-    setTimeout(() => {
-        router.replace('/login');
-      }, 1000);
+
+  setTimeout(() => {
+    router.replace('/login');
+  }, 3000);
 
 
   return (
     <View style={styles.container}>
-   
+
       <View style={styles.Circulo2} />
 
       <View style={styles.centerContent}>
-     
+
         <View style={styles.logo}>
-        <Image   style={styles.logo} source={require('./img/logo.png')} />
+          <Image style={styles.logo} source={require('./img/logo.png')} />
           <Text style={styles.logoText}>VIBRA</Text>
           <Text style={styles.descricao}>onde cada batida é um novo momento.</Text>
         </View>
       </View>
 
-   
+
       <View style={styles.Circulo1} />
     </View>
   );
@@ -38,7 +38,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     backgroundColor: '#FFF',
   },
- Circulo2: {
+  Circulo2: {
     width: 300,
     height: 150,
     borderTopLeftRadius: 150,
@@ -56,7 +56,7 @@ const styles = StyleSheet.create({
   logo: {
     width: '100%',
     height: 160,
-    alignItems:"center",
+    alignItems: "center",
     borderTopLeftRadius: 12,
     borderTopRightRadius: 12,
 
@@ -65,7 +65,7 @@ const styles = StyleSheet.create({
     fontSize: 32,
     fontWeight: 'bold',
   },
- descricao: {
+  descricao: {
     marginTop: 10,
     fontSize: 14,
     color: '#666',

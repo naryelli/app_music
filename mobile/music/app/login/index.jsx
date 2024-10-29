@@ -55,14 +55,14 @@ const style = StyleSheet.create({
         marginVertical: 290,
         justifyContent: 'flex-end'
     },
-   
+
     link: {
-        marginBottom:100
+        marginBottom: 100
     },
-    botaoconteiner:{
-        alignItems:'center',
-        justifyContent:'center',
-        
+    botaoconteiner: {
+        alignItems: 'center',
+        justifyContent: 'center',
+
     }
 
 })

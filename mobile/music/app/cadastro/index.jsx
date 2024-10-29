@@ -26,7 +26,7 @@ const style = StyleSheet.create({
     },
     container: {
         backgroundColor: '#197278'
-       
+
     },
 
     titulo: {
@@ -34,7 +34,7 @@ const style = StyleSheet.create({
         fontWeight: 'bold',
         marginBottom: 10,
         color: 'white',
-    
+
     },
     botaotexto: {
         color: 'white',
@@ -46,14 +46,14 @@ const style = StyleSheet.create({
         color: '#666',
         height: 80,
         color: 'white',
-       
+
     },
     card: {
         backgroundColor: 'white',
         padding: 20,
         borderRadius: 30,
-        marginBottom: 190,
-        height: '65%',
+        marginBottom: 270,
+        height: '70%',
         width: '100%',
         marginVertical: 190,
         justifyContent: 'flex-end'
@@ -61,10 +61,11 @@ const style = StyleSheet.create({
     link: {
         alignItems: 'center',
         justifyContent: 'center',
-       
+
     },
     logo: {
-
+        height: 20,
+        width: 20
     }
 
 })
@@ -118,33 +119,36 @@ export default SinUp = () => {
                         style={style.input}
                         onChangeText={(text) => setNome(text)}
                         value={nome}
-                        placeholder="Digite seu nome ;)"
+                        placeholder=" Digite seu nome"
+                        placeholderTextColor="#878787"
                     /><TextInput
                         style={style.input}
                         onChangeText={(text) => setSenha(text)}
                         value={sobrenome}
-                        placeholder="Digite seu sobrenome)"
-                        secureTextEntry={true}
+                        placeholder=" Digite seu sobrenome"
+                        placeholderTextColor="#878787"
+
                     />
                     <TextInput
                         style={style.input}
                         onChangeText={(text) => setEmail(text)}
                         value={email}
-                        placeholder="Digite seu email"
+                        placeholder=" Digite seu email"
+                        placeholderTextColor="#878787"
                     />
                     <TextInput
                         style={style.input}
                         onChangeText={(text) => setSenha(text)}
                         value={dataNascimento}
-                        placeholder="Digite sua data de nascimento"
-                        secureTextEntry={true}
+                        placeholder=" Digite sua data de nascimento"
+                        placeholderTextColor="#878787"
                     />
                     <TextInput
                         style={style.input}
                         onChangeText={(text) => setSenha(text)}
                         value={senha}
-                        placeholder="Digite sua senha (aqui é seguro confia)"
-                        secureTextEntry={true}
+                        placeholder=" Digite sua senha "
+                        placeholderTextColor="#878787"
                     />
 
 
