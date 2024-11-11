@@ -130,7 +130,7 @@ export default SinUp = () => {
 
                 <View style={style.botaoconteiner} >
                     <Pressable onPress={registrarUsuario} style={style.botao}>
-                    <Link href="/pg_inicil" style={style.botaotexto}>Entrar</Link>
+                    <Link href="/pg_inicio" style={style.botaotexto}>Entrar</Link>
                     </Pressable>
                     <Link href="/cadastro" style={style.link}>Cadastrar</Link>
                 </View >

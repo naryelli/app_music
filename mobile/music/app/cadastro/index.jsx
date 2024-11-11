@@ -154,7 +154,8 @@ export default SinUp = () => {
 
                     <View style={style.botao} >
                         <Pressable onPress={registrarUsuario}>
-                            <Text style={style.botaotexto}>Cadastrar</Text>
+                    <Link href="/" style={style.botaotexto}>Entrar</Link>
+                  
                         </Pressable>
                     </View>
                 </View>

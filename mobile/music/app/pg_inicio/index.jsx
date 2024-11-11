@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Text, StyleSheet, Image, FlatList, ScrollView } from 'react-native';
+import { View, Text, StyleSheet, Image, FlatList, ScrollView, Pressable} from 'react-native';
 import { Link } from 'expo-router';
 
 const artistas = [
@@ -32,65 +32,65 @@ const maisTocadas = [
 
 export default function App() {
   return (
-    <ScrollView style={estilos.container}>
-      <Pressable onPress={registrarUsuario} style={style.botao}>
-                    <Link href="/perfil" style={style.botaotexto}>Entrar</Link>
-                    </Pressable>
-      <View style={estilos.banner}>
-        <Image source={require('../img/branco.png')} style={estilos.imagemBanner} />
+    <ScrollView style={styles.container}>
+      <Pressable style={styles.botao}>
+        <Link href="/perfil" style={styles.botaotexto}></Link>
+      </Pressable>
+      <View style={styles.banner}>
+        <Image source={require('../img/branco.png')} style={styles.imagemBanner} />
       </View>
       <Link href="/perfil" >
-                <Image style={style.logo} source={require('../img/desfazer (2).png')} />
+                <Image style={styles.logo} source={require('../img/desfazer (2).png')} />
             </Link>
-      <Text style={estilos.tituloSecao}>ARTISTAS</Text>
+      <Text style={styles.tituloSecao}>ARTISTAS</Text>
       <FlatList
         data={artistas}
         horizontal
         keyExtractor={(item) => item.id}
         renderItem={({ item }) => (
-          <Image source={item.imagem} style={estilos.circulo} />
+          <Image source={item.imagem} style={styles.circulo} />
         )}
         
       />
 
-      <Text style={estilos.tituloSecao}>PLAYLIST</Text>
+      <Text style={styles.tituloSecao}>PLAYLIST</Text>
       <FlatList
         data={playlist}
         horizontal
         keyExtractor={(item) => item.id}
         renderItem={({ item }) => (
-          <Image source={item.imagem} style={estilos.retangulo} />
+          <Image source={item.imagem} style={styles.retangulo} />
         )}
 
       />
 
-      <Text style={estilos.tituloSecao}>ESPERAMOS QUE GOSTE</Text>
+      <Text style={styles.tituloSecao}>ESPERAMOS QUE GOSTE</Text>
       <FlatList
         data={g}
         horizontal
         keyExtractor={(item) => item.id}
         renderItem={({ item }) => (
-          <Image source={item.imagem} style={estilos.circulo} />
+          <Image source={item.imagem} style={styles.circulo} />
         )}
         
       />
-        <Text style={estilos.tituloSecao}>PODCAST</Text>
+        <Text style={styles.tituloSecao}>PODCAST</Text>
       <FlatList
         data={PODCAST}
         horizontal
         keyExtractor={(item) => item.id}
         renderItem={({ item }) => (
-          <Image source={item.imagem} style={estilos.circulo} />
+          <Image source={item.imagem} style={styles.circulo} />
         )}
         
       />
-         <Text style={estilos.tituloSecao}>MAIS TOCADAS NO BRASIL</Text>
+         <Text style={styles.tituloSecao}>MAIS TOCADAS NO BRASIL</Text>
       <FlatList
         data={maisTocadas}
         horizontal
         keyExtractor={(item) => item.id}
         renderItem={({ item }) => (
-          <Image source={item.imagem} style={estilos.retangulo} />
+          <Image source={item.imagem} style={styles.retangulo} />
         )}
 
       />
@@ -98,7 +98,7 @@ export default function App() {
   );
 }
 
-const estilos = StyleSheet.create({
+const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#283D3B',

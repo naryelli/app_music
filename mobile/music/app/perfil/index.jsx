@@ -1,45 +1,61 @@
 import React from 'react';
 import { View, Text, StyleSheet, Image, FlatList } from 'react-native';
+import { Link } from "expo-router";
+//import { AdvancedImage } from 'cloudinary-react-native';
+import { Cloudinary } from "@cloudinary/url-gen";
+
+const cld = new Cloudinary({
+  cloud: {
+      cloudName: 'demo'
+  },
+  url: {secure:true}
+});
+
+
 
 const TelaPerfil = () => {
+
   const generosFavoritos = ['Pop', 'Rock', 'Hip-Hop', 'Clássico'];
   const artistasFavoritos = [
-    { id: '1', nome: 'Taylor Swift', imagem: 'https://example.com/taylor.jpg' },
-    { id: '2', nome: 'Drake', imagem: 'https://example.com/drake.jpg' },
-    { id: '3', nome: 'Adele', imagem: 'https://example.com/adele.jpg' },
+    { id: '1', nome: 'System of a Down', imagem: '' },
+    { id: '2', nome: 'Eminem', imagem: '' },
+    { id: '3', nome: 'Turma do Pagode', imagem: '' },
   ];
 
   return (
-    <View style={estilos.container}>
-    
-      <View style={estilos.cabecalho}>
+    <View style={styles.container}>
+     
+      <View style={styles.cabecalho}>
+      <Link href="pg_inicio" >
+            <Image   style={styles.logo} source={require('../img/desfazer (2).png')} />
+            </Link>
         <Image
-          source={{ uri: 'https://example.com/foto_perfil.jpg' }}
-          style={estilos.imagemPerfil}
+          source={{ uri: '' }}
+          style={styles.imagemPerfil}
         />
-        <Text style={estilos.nomeUsuario}>NAryelli</Text>
-        <Text style={estilos.descricaoUsuario}>musica é vida</Text>
+        <Text style={styles.nomeUsuario}>User</Text>
+        <Text style={styles.descricaoUsuario}>Descrição</Text>
       </View>
 
     
-      <View style={estilos.secao}>
-        <Text style={estilos.tituloSecao}>Gêneros Favoritos</Text>
-        <View style={estilos.listaGeneros}>
+      <View style={styles.secao}>
+        <Text style={styles.tituloSecao}>Gêneros Favoritos</Text>
+        <View style={styles.listaGeneros}>
          
         </View>
       </View>
 
     
-      <View style={estilos.secao}>
-        <Text style={estilos.tituloSecao}>Artistas Favoritos</Text>
+      <View style={styles.secao}>
+        <Text style={styles.tituloSecao}>Artistas Favoritos</Text>
         <FlatList
           data={artistasFavoritos}
           keyExtractor={(item) => item.id}
           horizontal
           renderItem={({ item }) => (
-            <View style={estilos.artistaItem}>
-              <Image source={{ uri: item.imagem }} style={estilos.imagemArtista} />
-              <Text style={estilos.nomeArtista}>{item.nome}</Text>
+            <View style={styles.artistaItem}>
+              <Image source={{ uri: item.imagem }} style={styles.imagemArtista} />
+              <Text style={styles.nomeArtista}>{item.nome}</Text>
             </View>
           )}
         />
@@ -48,7 +64,8 @@ const TelaPerfil = () => {
   );
 };
 
-const estilos = StyleSheet.create({
+
+const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#f5f5f5',
@@ -111,6 +128,12 @@ const estilos = StyleSheet.create({
     textAlign: 'center',
     color: '#333',
   },
+  logo:{
+    width: 30,
+    height: 30,
+    marginRight: 405,
+    
+}
 });
 
 export default TelaPerfil;
