@@ -3,6 +3,8 @@ import { View, Text, StyleSheet, Image, FlatList } from 'react-native';
 import { Link } from "expo-router";
 //import { AdvancedImage } from 'cloudinary-react-native';
 import { Cloudinary } from "@cloudinary/url-gen";
+import * as ImagePicker from 'expo-image-picker';
+
 
 const cld = new Cloudinary({
   cloud: {
@@ -12,6 +14,44 @@ const cld = new Cloudinary({
 });
 
 
+
+  const pickImage = async () => {
+  
+    let result = await ImagePicker.launchImageLibraryAsync({
+      mediaTypes: ImagePicker.MediaTypeOptions.All,
+      allowsEditing: true,
+      aspect: [4, 3],
+      quality: 1,
+    });
+
+    console.log(result);
+
+    if (!result.canceled) {
+      setImage(result.assets[0].uri);
+    }
+  };
+
+const handletSendImage = async () =>{
+try{
+  const data = {
+    "file": image,
+    "upload_preset": 'ml_default',
+    "name": 'teste',
+  }
+  const res = await fetch ('http://api.cloudinary.com/v1_1/dywd7cidx/upload',{
+    method: 'POST',
+    headers:{
+      'content-type':'application/json'
+    },
+    body: JSON.stringify(data)
+  });
+const result = await res.json();
+console.log(result);
+}
+catch (e){
+  console.log(e)
+}
+};
 
 const TelaPerfil = () => {
 
