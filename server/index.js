@@ -6,7 +6,7 @@ import {rotas} from './roteamento/rotas_autenticacao.js'
 const app = Express()
 app.use(Express.json())
 app.use(cors())
-//criarTabelas()
+criarTabelas()
 
 app.use('/autenticacao', rotas)
 
