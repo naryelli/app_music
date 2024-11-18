@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Text, StyleSheet, Image, FlatList } from 'react-native';
+import { View, Text, StyleSheet, Image, FlatList, Button, Pressable} from 'react-native';
 import { Link } from "expo-router";
 //import { AdvancedImage } from 'cloudinary-react-native';
 import { Cloudinary } from "@cloudinary/url-gen";
@@ -8,49 +8,49 @@ import * as ImagePicker from 'expo-image-picker';
 
 const cld = new Cloudinary({
   cloud: {
-      cloudName: 'demo'
+    cloudName: 'demo'
   },
-  url: {secure:true}
+  url: { secure: true }
 });
 
 
 
-  const pickImage = async () => {
-  
-    let result = await ImagePicker.launchImageLibraryAsync({
-      mediaTypes: ImagePicker.MediaTypeOptions.All,
-      allowsEditing: true,
-      aspect: [4, 3],
-      quality: 1,
-    });
+const pickImage = async () => {
 
-    console.log(result);
-
-    if (!result.canceled) {
-      setImage(result.assets[0].uri);
-    }
-  };
-
-const handletSendImage = async () =>{
-try{
-  const data = {
-    "file": image,
-    "upload_preset": 'ml_default',
-    "name": 'teste',
-  }
-  const res = await fetch ('http://api.cloudinary.com/v1_1/dywd7cidx/upload',{
-    method: 'POST',
-    headers:{
-      'content-type':'application/json'
-    },
-    body: JSON.stringify(data)
+  let result = await ImagePicker.launchImageLibraryAsync({
+    mediaTypes: ImagePicker.MediaTypeOptions.All,
+    allowsEditing: true,
+    aspect: [4, 3],
+    quality: 1,
   });
-const result = await res.json();
-console.log(result);
-}
-catch (e){
-  console.log(e)
-}
+
+  console.log(result);
+
+  if (!result.canceled) {
+    setImage(result.assets[0].uri);
+  }
+};
+
+const handletSendImage = async () => {
+  try {
+    const data = {
+      "file": image,
+      "upload_preset": 'ml_default',
+      "name": 'teste',
+    }
+    const res = await fetch('http://api.cloudinary.com/v1_1/dywd7cidx/upload', {
+      method: 'POST',
+      headers: {
+        'content-type': 'application/json'
+      },
+      body: JSON.stringify(data)
+    });
+    const result = await res.json();
+    console.log(result);
+  }
+  catch (e) {
+    console.log(e)
+  }
 };
 
 const TelaPerfil = () => {
@@ -64,11 +64,11 @@ const TelaPerfil = () => {
 
   return (
     <View style={styles.container}>
-     
+
       <View style={styles.cabecalho}>
-      <Link href="pg_inicio" >
-            <Image   style={styles.logo} source={require('../img/desfazer (2).png')} />
-            </Link>
+        <Link href="pg_inicio" >
+          <Image style={styles.logo} source={require('../img/desfazer (2).png')} />
+        </Link>
         <Image
           source={{ uri: '' }}
           style={styles.imagemPerfil}
@@ -77,15 +77,15 @@ const TelaPerfil = () => {
         <Text style={styles.descricaoUsuario}>Descrição</Text>
       </View>
 
-    
+
       <View style={styles.secao}>
         <Text style={styles.tituloSecao}>Gêneros Favoritos</Text>
         <View style={styles.listaGeneros}>
-         
+
         </View>
       </View>
 
-    
+
       <View style={styles.secao}>
         <Text style={styles.tituloSecao}>Artistas Favoritos</Text>
         <FlatList
@@ -97,9 +97,13 @@ const TelaPerfil = () => {
               <Image source={{ uri: item.imagem }} style={styles.imagemArtista} />
               <Text style={styles.nomeArtista}>{item.nome}</Text>
             </View>
-          )}
+         )}
         />
+     
       </View>
+      <Pressable style={styles.cartao}>
+        <Link href="pagamento" >Adicinar Cartão</Link>
+        </Pressable>
     </View>
   );
 };
@@ -168,12 +172,18 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     color: '#333',
   },
-  logo:{
+  logo: {
     width: 30,
     height: 30,
     marginRight: 405,
-    
-}
+
+  },
+  cartao:{
+    fontSize: 18,
+    fontWeight: 'bold',
+    color: '#333',
+    margin: 30,
+  }
 });
 
 export default TelaPerfil;
