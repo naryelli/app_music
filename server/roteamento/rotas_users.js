@@ -1,8 +1,12 @@
-import Express from "express";
-import {lista} from '../controlador/controlador_usuarios.js'
+import express from 'express'
+import {pegar_usuario, listar_usuarios, deletar_usuario, trocar_img} from '../controlador/controlador_usuarios.js'
 
-const rota = Express.Router()
+const rotas_users = express.Router()
 
-rota.get('/lista', lista)
+rotas_users.get('/:id', pegar_usuario)
+rotas_users.get('/', listar_usuarios)
+rotas_users.delete('/:id', deletar_usuario)
+rotas_users.post('/trocar-img/:id', trocar_img)
 
-export {rota}
+
+export { rotas_users }
