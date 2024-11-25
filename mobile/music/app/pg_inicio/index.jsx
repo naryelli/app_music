@@ -42,6 +42,10 @@ export default function App() {
       <Link href="/perfil" >
                 <Image style={styles.logo} source={require('../img/desfazer (2).png')} />
             </Link>
+            <Pressable >
+                    <Link href="/play" style={styles.play}>Play</Link>
+                  
+                        </Pressable>
       <Text style={styles.tituloSecao}>ARTISTAS</Text>
       <FlatList
         data={artistas}
@@ -122,6 +126,13 @@ const styles = StyleSheet.create({
     fontSize: 16,
     fontWeight: 'bold',
     marginVertical: 10,
+  },
+ play: {
+    paddingVertical: 8,
+    paddingHorizontal: 100,
+    backgroundColor:'#FFFFFF',
+    borderRadius: 20,
+    marginHorizontal:70 ,
   },
   circulo: {
     width: 120,
