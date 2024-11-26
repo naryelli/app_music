@@ -1,5 +1,5 @@
 import express from 'express'
-import {pegar_usuario, listar_usuarios, deletar_usuario, trocar_img} from '../controlador/controlador_usuarios.js'
+import {pegar_usuario, listar_usuarios, deletar_usuario, trocar_img} from '../controlador/controlador_user.js'
 
 const rotas_users = express.Router()
 

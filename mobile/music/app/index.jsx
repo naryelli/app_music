@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { View, Text, StyleSheet, Image } from 'react-native';
 import { router } from 'expo-router';
 
@@ -6,10 +6,13 @@ import { router } from 'expo-router';
 
 const VibrarScreen = () => {
 
-  setTimeout(() => {
-    router.replace('/login');
-  }, 1000);
+  useEffect(() => {
 
+    setTimeout(() => {
+      router.replace('/login');
+    }, 1000);
+
+  }, [])
 
   return (
     <View style={styles.container}>

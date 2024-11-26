@@ -6,28 +6,33 @@ const artistas = [
   { id: '1', imagem: require('../img/branco.png') },
   { id: '2', imagem: require('../img/branco.png') },
   { id: '3', imagem: require('../img/branco.png') },
+  { id: '4', imagem: require('../img/branco.png') },
 ];
 
 const playlist = [
   { id: '1', imagem: require('../img/branco.png') },
   { id: '2', imagem: require('../img/branco.png') },
   { id: '3', imagem: require('../img/branco.png') },
+  { id: '4', imagem: require('../img/branco.png') },
 ];
 
 const g = [
   { id: '1', imagem: require('../img/branco.png') },
   { id: '2', imagem: require('../img/branco.png') },
   { id: '3', imagem: require('../img/branco.png') },
+  { id: '4', imagem: require('../img/branco.png') },
 ];
 const PODCAST = [
   { id: '1', imagem: require('../img/branco.png') },
   { id: '2', imagem: require('../img/branco.png') },
   { id: '3', imagem: require('../img/branco.png') },
+  { id: '4', imagem: require('../img/branco.png') },
 ];
 const maisTocadas = [
   { id: '1', imagem: require('../img/branco.png') },
   { id: '2', imagem: require('../img/branco.png') },
   { id: '3', imagem: require('../img/branco.png') },
+  { id: '4', imagem: require('../img/branco.png') },
 ];
 
 export default function App() {

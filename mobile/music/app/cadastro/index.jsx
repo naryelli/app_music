@@ -1,6 +1,95 @@
 import { useState } from "react";
-import { View, Text, TextInput, Pressable, StyleSheet, SafeAreaView, Image } from "react-native";
+import { View, Text, TextInput, Button, StyleSheet, SafeAreaView, Image } from "react-native";
 import { Link } from 'expo-router';
+
+
+const RegisterScreen = () => {
+    const [email, setEmail] = useState('')
+    const [nome, setNome] = useState('')
+    const [senha, setSenha] = useState('')
+    const [sobrenome, setSobrenome] = useState('')
+    const [dataNascimento, setDataNascimento] = useState('')
+
+    const registrarUsuario = async function () {
+        if (!nome || !email || !senha) {
+            console.log('Todos os campos devem ser preenchidos')
+            return
+        }
+        const resposta = await fetch('http://localhost:8000/autenticacao/registro', {
+            method: 'POST',
+            headers: {
+                Accept: 'application/json',
+                'Content-type': 'application/json',
+            },
+            body: JSON.stringify({ nome: nome, email: email, senha: senha, sobrenome: sobrenome, dataNascimento: dataNascimento })
+        })
+
+        if (!resposta) {
+            console.log('erro')
+        } else if (resposta.status == 200) {
+            console.log('Usuário criado com sucesso')
+        } else {
+            console.log('ocorreu um erro')
+        }
+    }
+
+    return (
+        <SafeAreaView style={style.container}>
+            <Link href="/login" >
+                <Image style={style.logo} source={require('../img/desfazer (2).png')} />
+            </Link>
+            <View style={style.card}>
+                <Text style={style.titulo}>CRIE SUA CONTA E COMECE A SENTIR A VIBRAÇÃO!</Text>
+                <Text style={style.descricao}>A música está esperando por você.</Text>
+                <View />
+                <View style={style.inputView}>
+                    <TextInput
+                        style={style.input}
+                        onChangeText={(text) => setNome(text)}
+                        value={nome}
+                        placeholder=" Digite seu nome"
+                        placeholderTextColor="#878787"
+                    /><TextInput
+                        style={style.input}
+                        onChangeText={(text) => setSobrenome(text)}
+                        value={sobrenome}
+                        placeholder=" Digite seu sobrenome"
+                        placeholderTextColor="#878787"
+
+                    />
+                    <TextInput
+                        style={style.input}
+                        onChangeText={(text) => setEmail(text)}
+                        value={email}
+                        placeholder=" Digite seu email"
+                        placeholderTextColor="#878787"
+                    />
+                    <TextInput
+                        style={style.input}
+                        onChangeText={(text) => setDataNascimento(text)}
+                        value={dataNascimento}
+                        placeholder=" Digite sua data de nascimento"
+                        placeholderTextColor="#878787"
+                    />
+                    <TextInput
+                        style={style.input}
+                        onChangeText={(text) => setSenha(text)}
+                        value={senha}
+                        placeholder=" Digite sua senha "
+                        placeholderTextColor="#878787"
+                    />
+
+
+                    <View style={style. botao}>
+                        <Button title="Cadastrar" color="#FFFFFF" onPress={registrarUsuario} />
+                    </View>
+                </View>
+            </View>
+        </SafeAreaView>
+
+    )
+};
+
 
 const style = StyleSheet.create({
     input: {
@@ -69,98 +158,4 @@ const style = StyleSheet.create({
     }
 
 })
-
-export default SinUp = () => {
-    //const email = ''
-
-    const [email, setEmail] = useState('')
-    const [nome, setNome] = useState('')
-    const [senha, setSenha] = useState('')
-    const [sobrenome, setSobrenome] = useState('')
-    const [dataNascimento, setDataNascimento] = useState('')
-
-
-
-    const registrarUsuario = async function () {
-        if (!nome || !email || !senha) {
-            console.log('os parametros nome, email e senha devem ser fornecidos')
-            return
-        }
-        const resposta = await fetch('http://localhost:8000/registro', {
-            method: 'POST',
-            headers: {
-                Accept: 'application/json',
-                'Content-type': 'application/json',
-            },
-            body: JSON.stringify({ name: nome, email: email, senha: senha, sobrenome: sobrenome, dataNascimento: dataNascimento })
-        })
-
-        if (!resposta) {
-            console.log('erro')
-        } else if (resposta.status == 200) {
-            console.log('user criado com sucesso')
-        } else {
-            console.log('ocorreu um erro')
-        }
-    }
-
-
-    return (
-        <SafeAreaView style={style.container}>
-            <Link href="/login" >
-                <Image style={style.logo} source={require('../img/desfazer (2).png')} />
-            </Link>
-            <View style={style.card}>
-                <Text style={style.titulo}>CRIE SUA CONTA E COMECE A SENTIR A VIBRAÇÃO!</Text>
-                <Text style={style.descricao}>A música está esperando por você.</Text>
-                <View />
-                <View style={style.inputView}>
-                    <TextInput
-                        style={style.input}
-                        onChangeText={(text) => setNome(text)}
-                        value={nome}
-                        placeholder=" Digite seu nome"
-                        placeholderTextColor="#878787"
-                    /><TextInput
-                        style={style.input}
-                        onChangeText={(text) => setSenha(text)}
-                        value={sobrenome}
-                        placeholder=" Digite seu sobrenome"
-                        placeholderTextColor="#878787"
-
-                    />
-                    <TextInput
-                        style={style.input}
-                        onChangeText={(text) => setEmail(text)}
-                        value={email}
-                        placeholder=" Digite seu email"
-                        placeholderTextColor="#878787"
-                    />
-                    <TextInput
-                        style={style.input}
-                        onChangeText={(text) => setSenha(text)}
-                        value={dataNascimento}
-                        placeholder=" Digite sua data de nascimento"
-                        placeholderTextColor="#878787"
-                    />
-                    <TextInput
-                        style={style.input}
-                        onChangeText={(text) => setSenha(text)}
-                        value={senha}
-                        placeholder=" Digite sua senha "
-                        placeholderTextColor="#878787"
-                    />
-
-
-                    <View style={style.botao} >
-                        <Pressable onPress={registrarUsuario}>
-                    <Link href="/pg_inicio" style={style.botaotexto}>Entrar</Link>
-                  
-                        </Pressable>
-                    </View>
-                </View>
-            </View>
-        </SafeAreaView>
-
-    )
-}
+export default RegisterScreen;
